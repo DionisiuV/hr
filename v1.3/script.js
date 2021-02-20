@@ -14,6 +14,10 @@ const inputUpdateSalariu = document.querySelector("#input-update-salariu");
 
 btnUpdateSalariu.addEventListener(
   "click",function () {
+    if(inputUpdateSalariu.value === ``) {
+      alert("Nu ai introdus salariul nou!");
+      return;
+    }
   update(select.options[select.selectedIndex].value, inputUpdateSalariu.value);
   }
 );
@@ -203,6 +207,15 @@ const scutitImpozit = document.querySelector("#scutit-impozit-procent");
 // Actionare buton
 button.addEventListener("click", () => {
 
+  if (inputSalariu.value === "") {
+    alert("Nu ai introdus salariul!");
+    return;
+  }
+  if(!salariuNetCheck.checked || !salariuBrutCheck.checked) {
+    alert("Nu ai selectat tipul salariului pe care vrei sa il calculezi!");
+    
+  }
+
   vechime.innerHTML = ``;
   pozitie.innerHTML = `Functie`;
   echipa.innerHTML = ``;
@@ -217,10 +230,7 @@ button.addEventListener("click", () => {
   let salariuBrut = 0;
   let salariuNet = 0;
 
-  if (inputSalariu.value === "") {
-    alert("Nu ai introdus salariul!");
-    return;
-  }
+
   salariuIntrodus.innerHTML = salariu;
 
   if (salariuNetCheck.checked) {

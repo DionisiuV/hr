@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>JavaScript example</title>
+		<style media="only screen">
+    html, body {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        box-sizing: border-box;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    html {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 0;
+        overflow: auto;
+    }
+
+    body {
+        padding: 1rem;
+        overflow: auto;
+    }
+    </style>
+	</head>
+	<body>
+		<div style="height: 100%; display: flex; flex-direction: column;">
+			<div style="margin-bottom: 4px;">
+				<button onclick="addItems()">Add Items</button>
+				<button onclick="addItems(2)">Add Items addIndex=2</button>
+				<button onclick="updateItems()">Update Top 2</button>
+				<button onclick="onRemoveSelected()">Remove Selected</button>
+				<button onclick="getRowData()">Get Row Data</button>
+				<button onclick="clearData()">Clear Data</button>
+			</div>
+			<div style="flex-grow: 1;">
+				<div id="myGrid" style="height: 100%;" class="ag-theme-alpine">
+				</div>
+			</div>
+		</div>
+		<script>var __basePath = './';</script>
+		<script src="https://unpkg.com/@ag-grid-community/all-modules@25.0.0/dist/ag-grid-community.min.js">
+		</script>
+		<script src="main.js">
+		</script>
+	</body>
+</html>

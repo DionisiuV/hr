@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <title>Calculator Salariu</title>
+</head>
+<body>
+    <div class="bg-light">
+    <div class="text-dark bg-gradient" style="background-color: rgba(0, 0, 0, 0.2)">
+    <nav class="navbar navbar-expand-lg navbar-light  ">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Aplicatie Contabilitate</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="#">Link</a>
+                    <a class="nav-item nav-link" href="#" id="toggle-selectare">Link</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+    <!-- Start Calculator -->
+    <div class="container card-body mx-auto">
+
+        <div class="row">
+            <div class="d-flex justify-content-center px-5">
+            <div class="col-sm-3 card card-body box shadow p-3 mb-5 bg-body rounded" id="calculator-toggle">
+
+                <h4 style="border-bottom: 2px solid rgb(187, 187, 187);color:rgb(63, 63, 63);padding-top: 5px;">
+                    Calculator salariu</h4>
+
+                <form id="date-salariu" style="margin-top: 10px">
+
+                    <label for="salariu">
+                        <input placeholder="Introduceti salariul" type="number" id="salariu">
+                    </label><br><br>
+
+                    <label for="optiuni-salariu" name="optiuni-salariu">
+
+                        <input type="checkbox" id="scutit-impozit"> Scutit Impozit <br>
+                        <input type="radio" id="salariu-net" value="net" name="optiuni-salariu"> Calculare Salariu Net
+                        <br>
+                        <input type="radio" id="salariu-brut" value="brut" name="optiuni-salariu"> Calculare Salariu
+                        Brut <br>
+                    </label>
+                    <br><br><br>
+                </form>
+                <button type="button" class="btn btn-dark btn-md btn-block" id="calculeaza">Calculeaza</button>
+                <br>
+
+            </div>
+            <!-- End Calculator -->
+
+            <!-- Start Calculare Salariu Angajat  -->
+            <div class="col-sm-3 card card-body shadow p-3 mb-5 bg-body rounded ms-3" style="display:block" id="calculare-salariu-angajat">
+                <h4 style="border-bottom: 2px solid rgb(187, 187, 187);color:rgb(63, 63, 63);padding-top: 5px;">
+                    Calculare salariu angajat</h4>
+
+                <select  id="selectare-angajat" style="margin-top: 10px">
+
+                    <option value="selectA">Selecteaza angajat</option>
+                </select>
+                <br>
+                <!-- <p style="margin:0px" id="vechime"></p>
+                <p style="margin:0px" id="pozitie"></p>
+                <p style="margin:0px" id="echipa"></p> -->
+                <label for="update-salariu">
+                    <input placeholder="Introduceti noul salariu" type="number" id="input-update-salariu" class="mt-5"><br>
+                    <button type="button" class="btn btn-dark btn-sm btn-block mt-2" id="btn-update-salariu">Modifica salariul</button>
+                </label><br><br>
+            </div>
+            <!-- End Calculare Salariu Angajat  -->
+
+            
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+
+<!-- Start Grafic -->
+<div class="col-sm-8 card card-body shadow p-3 mb-5 bg-body rounded mx-auto" id="raport-salariu">
+
+    <h4 style="border-bottom: 2px solid rgb(187, 187, 187);color:rgb(63, 63, 63);padding-top: 5px;">Angajat
+       </h4>
+
+    <div>
+        <table class="table" style="margin-top: 10px;">
+            
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col-md-6" ><span id="nume-angajat">Nume</span></th>
+                    <th scope="col-md-4"></th>
+                    <th scope="col-md-2"><span id="pozitie">Functie</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td scope="col-md-6" style="padding-left: 20px">Vechime in companie</td>
+                    <th scope="col-md-4">
+                    <td scope="col-md-2"><span id="vechime"></span></td>
+                </tr>
+                <tr>
+                    <td scope="col-md-6" style="padding-left: 20px">Echipa</td>
+                    <td scope="col-md-4"></td>
+                    <td scope="col-md-2"><span id="echipa"></span></td>
+                </tr>
+                <tr>
+                    <td scope="col-md-6" style="padding-left: 20px">Telefon</td>
+                    <td scope="col-md-4"></td>
+                    <td scope="col-md-2"><span id="nr-telefon"></span></td>
+                </tr>
+                <tr>
+                    <td scope="col-md-6" style="padding-left: 20px">Email</td>
+                    <td scope="col-md-4"></td>
+                    <td scope="col-md-2"><span id="adresa-email"></span></td>
+                </tr>
+            </tbody>
+        
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col-md-6">Raport Salariu</th>
+                    <th scope="col-md-4">Retineri</th>
+                    <th scope="col-md-2">Lei</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="col-md-6">Salariu <span id="tip-salariu-selectat"></span></th>
+                    <th scope="col-md-4">
+                    <th scope="col-md-2"><span id="salariu-rezultat"></span></th>
+                </tr>
+                <tr>
+                    <td class="col-md-6" style="padding-left: 20px">Asigurari sociale</td>
+                    <td class="col-md-4">25%</td>
+                    <td class="col-md-2"><span id="suma-cas"></span></td>
+                </tr>
+                <tr>
+                    <td class="col-md-6" style="padding-left: 20px">Asigurari sociale de sanatate</td>
+                    <td class="col-md-4">10%</td>
+                    <td class="col-md-2"><span id="suma-cass"></span></td>
+                </tr>
+                <tr>
+                    <td class="col-md-6" style="padding-left: 20px">Impozit</td>
+                    <td class="col-md-4"><span id="scutit-impozit-procent"></span></td>
+                    <td class="col-md-2"><span id="suma-impozit"></span></td>
+                </tr>
+                <tr>
+                    <th class="col-md-6">Salariu <span id="tip-salariu-introdus"></span></td>
+                    <td class="col-md-4"></td>
+                    <th class="col-md-2"><span id="salariu-introdus"></span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- End Grafic -->
+
+
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+<!-- Footer -->
+<footer class="bg-light text-center text-lg-start footer" style="margin-top: 40px;">
+    
+  
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+      © Valentin
+      <a class="text-dark" href="#">WDJS</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+
+  <!-- Footer -->
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+    </div>
+</body>
+
+</html>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="script.js"></script>

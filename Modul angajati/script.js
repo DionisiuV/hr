@@ -1,15 +1,18 @@
 
 
 /* Start HTTP */
-const url = "angajati.json";
+const url = "http://localhost:8080/api/employee/";
 
+testAxios();
+
+function testAxios() {
 axios
   .get(url)
   .then(function (response) {
-    const options = response.data;
+    const options = response.data.data;
 
     for (let i = 0; i < options.length; i++) {
-      let newItem =  [createRowDataTable(options[i].name.firstName, options[i].name.surname, options[i].position, options[i].team, options[i].email, options[i].phone, options[i].salary, options[i].paysTax)];
+      let newItem =  [createRowDataTable(options[i].firstName, options[i].surname, options[i].position, options[i].team, options[i].email, `0${options[i].phone}`, options[i].salary, options[i].paysTax)];
       gridOptions.api.applyTransaction({
         add: newItem,
       });
@@ -18,6 +21,7 @@ axios
   .catch(function (error) {
     console.log(error);
   });
+}
 
   function axiosAddEntry() {
     axios
@@ -29,7 +33,8 @@ axios
     "companyAge": `${vechime.value}`,
     "phone": `${telefon.value}`,
     "email": `${email.value}`,
-    "salary": `${salariu.value}`
+    "salary": `${salariu.value}`,
+    "paysTax": `${impozit.checked}`
   })
   .then(function (response) {
     console.log(response.data);
@@ -37,8 +42,7 @@ axios
   .catch(function (error) {
     console.log(error);
   });
-  }
-
+}
 /* End HTTP */
 
 const button = document.querySelector("#adauga");
@@ -54,7 +58,25 @@ const salariu = document.querySelector("#inputSalariu");
 let impozit = document.querySelector("#impozitCheck");
 
 
-button.addEventListener("click", addItems);
+button.addEventListener("click", function() {
+
+  if(nume.value === `` || prenume.value === `` || echipa.value === `` || functie.value === `` || vechime.value === `` || telefon.value === `` || email.value === `` || salariu.value === ``) {
+    alert(`Toate campurile sunt obligatorii!`);
+    return;
+  }
+
+  axiosAddEntry();
+  nume.value = ``;
+  prenume.value = ``;
+  echipa.value = ``;
+  functie.value = ``;
+  vechime.value = ``;
+  telefon.value = ``;
+  email.value = ``;
+  salariu.value = ``;
+  impozit = false;
+  testAxios();
+});
 
 var columnDefs = [
     { field: "nume" },

@@ -50,11 +50,11 @@
 
       <!-- Start Form -->
       <div class="container" style="margin-top: 3%">
-        <input type="text" name="example" list="exampleList">
-        <datalist id="exampleList">
-          <option value="A">  
-          <option value="B">
-        </datalist>
+        <div>
+          <datalist id="suggestions">
+          </datalist>
+          <input id="suggestions-id" placeholder="Selecteaza angajat"  autoComplete="on" list="suggestions" style="width: 30%"/> 
+      </div>
       </div>
       <!-- End Form -->
 

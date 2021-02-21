@@ -1,0 +1,56 @@
+[
+    {
+        "id": 0,
+        "hours": 6,
+        "date": "2020-10-24",
+        "employee": "Sanders Heath"
+    },
+    {
+        "id": 1,
+        "hours": 4,
+        "date": "2020-10-25",
+        "employee": "Catherine Buck"
+    },
+    {
+        "id": 2,
+        "hours": 3,
+        "date": "2020-10-22",
+        "employee": "Abigail Heath"
+    },
+    {
+        "id": 3,
+        "hours": 6,
+        "date": "2020-10-21",
+        "employee": "Vicki Mercer"
+    },
+    {
+        "id": 4,
+        "hours": 8,
+        "date": "2020-10-23",
+        "employee": "Tamera Tailey"
+    },
+    {
+        "id": 5,
+        "hours": 8,
+        "date": "2020-10-20",
+        "employee": "Chase Carver"
+    },
+    {
+        "id": 6,
+        "hours": 8,
+        "date": "2020-10-29",
+        "employee": "Collier Emerson"
+    },
+    {
+        "id": 7,
+        "hours": 4,
+        "date": "2020-10-28",
+        "employee": "Flores Burton"
+    },
+    {
+        "id": 8,
+        "hours": 6,
+        "date": "2020-10-27",
+        "employee": "Katrina Aguilar"
+    }
+]

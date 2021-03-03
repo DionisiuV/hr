@@ -72,16 +72,16 @@ function start() {
 
     vechime.innerHTML = `<strong>${dataArray[select.selectedIndex - 1].companyAge
       } ani</strong>`;
-    pozitie.innerHTML = `<strong>${dataArray[select.selectedIndex - 1].position
-      }</string>`;
+    pozitie.innerHTML = `${dataArray[select.selectedIndex - 1].position
+      }`;
     echipa.innerHTML = `<strong>${dataArray[select.selectedIndex - 1].team
       }</string>`;
     email.innerHTML = `<strong>${dataArray[select.selectedIndex - 1].email
       }</strong>`;
     telefon.innerHTML = `<strong>0${dataArray[select.selectedIndex - 1].phone
       }</strong>`;
-    numeAngajat.innerHTML = `<strong>${select.options[select.selectedIndex].textContent
-      }</strong>`;
+    numeAngajat.innerHTML = `${select.options[select.selectedIndex].textContent
+      }`;
   };
 }
 

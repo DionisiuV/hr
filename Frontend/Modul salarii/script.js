@@ -12,16 +12,13 @@ const telefon = document.querySelector("#nr-telefon");
 const btnUpdateSalariu = document.querySelector("#btn-update-salariu");
 const inputUpdateSalariu = document.querySelector("#input-update-salariu");
 
-btnUpdateSalariu.addEventListener(
-  "click",function () {
-    if(inputUpdateSalariu.value === ``) {
-      alert("Nu ai introdus salariul nou!");
-      return;
-    }
-  update(select.options[select.selectedIndex].value, inputUpdateSalariu.value);
+btnUpdateSalariu.addEventListener("click", function () {
+  if (inputUpdateSalariu.value === ``) {
+    alert("Nu ai introdus salariul nou!");
+    return;
   }
-);
-
+  update(select.options[select.selectedIndex].value, inputUpdateSalariu.value);
+});
 
 let test1 = [];
 
@@ -57,7 +54,6 @@ axios
 function start() {
   select.addEventListener("change", selectareAngajat, false);
   select.onchange = function (event) {
-
     // getAngajat(select.options[select.selectedIndex].value);
 
     // let id = select.options[select.selectedIndex].value;
@@ -74,19 +70,18 @@ function start() {
 
     // console.log(test1);
 
-
-    vechime.innerHTML = `<strong>${dataArray[select.selectedIndex - 1].companyAge} ani</strong>`;
-    pozitie.innerHTML = `<strong>${dataArray[select.selectedIndex - 1].position}</string>`;
-    echipa.innerHTML = `<strong>${dataArray[select.selectedIndex - 1].team}</string>`;
-    email.innerHTML = `<strong>${
-      dataArray[select.selectedIndex - 1].email
-    }</strong>`;
-    telefon.innerHTML = `<strong>0${
-      dataArray[select.selectedIndex - 1].phone
-    }</strong>`;
-    numeAngajat.innerHTML = `${
-      select.options[select.selectedIndex].textContent
-    }`;
+    vechime.innerHTML = `<strong>${dataArray[select.selectedIndex - 1].companyAge
+      } ani</strong>`;
+    pozitie.innerHTML = `<strong>${dataArray[select.selectedIndex - 1].position
+      }</string>`;
+    echipa.innerHTML = `<strong>${dataArray[select.selectedIndex - 1].team
+      }</string>`;
+    email.innerHTML = `<strong>${dataArray[select.selectedIndex - 1].email
+      }</strong>`;
+    telefon.innerHTML = `<strong>0${dataArray[select.selectedIndex - 1].phone
+      }</strong>`;
+    numeAngajat.innerHTML = `<strong>${select.options[select.selectedIndex].textContent
+      }</strong>`;
   };
 }
 
@@ -117,14 +112,14 @@ function selectareAngajat() {
   cas = (25 * salariu) / 100;
   cass = (10 * salariu) / 100;
 
-  let paysTax = select.options[select.selectedIndex].dataset.paysTax;
+  let paysTax = dataArray[select.selectedIndex - 1].paysTax;
 
-  if (paysTax === "false") {
-    impozit = 0;
-    scutitImpozit.innerHTML = `0%`;
-  } else {
+  if (paysTax) {
     scutitImpozit.innerHTML = `10%`;
     impozit = ((salariu - cas - cass) * 10) / 100;
+  } else {
+    impozit = 0;
+    scutitImpozit.innerHTML = `0%`;
   }
 
   salariuNet = salariu - cas - cass - impozit;
@@ -137,39 +132,36 @@ function selectareAngajat() {
   tipSalariuIntrodus.innerHTML = "Brut";
 }
 
-
-
 const update = function (id, salariuNou) {
-  
   axios
     .put(`http://localhost:8080/api/employee/${id}`, {
       salary: salariuNou,
     })
     .then(function (response) {
       console.log(response.data);
-  salariu = inputUpdateSalariu.value;
-  salariuIntrodus.innerHTML = salariu;
-  cas = (25 * salariu) / 100;
-  cass = (10 * salariu) / 100;
+      salariu = inputUpdateSalariu.value;
+      salariuIntrodus.innerHTML = salariu;
+      cas = (25 * salariu) / 100;
+      cass = (10 * salariu) / 100;
 
-  let paysTax = select.options[select.selectedIndex].dataset.paysTax;
+      let paysTax = select.options[select.selectedIndex].dataset.paysTax;
 
-  if (paysTax === "false") {
-    impozit = 0;
-    scutitImpozit.innerHTML = `0%`;
-  } else {
-    scutitImpozit.innerHTML = `10%`;
-    impozit = ((salariu - cas - cass) * 10) / 100;
-  }
+      if (paysTax === "false") {
+        impozit = 0;
+        scutitImpozit.innerHTML = `0%`;
+      } else {
+        scutitImpozit.innerHTML = `10%`;
+        impozit = ((salariu - cas - cass) * 10) / 100;
+      }
 
-  salariuNet = salariu - cas - cass - impozit;
+      salariuNet = salariu - cas - cass - impozit;
 
-  salariuRezultat.innerHTML = Math.round(salariuNet);
-  sumaCas.innerHTML = Math.round(cas);
-  sumaCass.innerHTML = Math.round(cass);
-  sumaImpozit.innerHTML = Math.round(impozit);
-  tipSalariuSelectat.innerHTML = "Net";
-  tipSalariuIntrodus.innerHTML = "Brut";
+      salariuRezultat.innerHTML = Math.round(salariuNet);
+      sumaCas.innerHTML = Math.round(cas);
+      sumaCass.innerHTML = Math.round(cass);
+      sumaImpozit.innerHTML = Math.round(impozit);
+      tipSalariuSelectat.innerHTML = "Net";
+      tipSalariuIntrodus.innerHTML = "Brut";
     });
 };
 
@@ -206,14 +198,9 @@ const scutitImpozit = document.querySelector("#scutit-impozit-procent");
 
 // Actionare buton
 button.addEventListener("click", () => {
-
   if (inputSalariu.value === "") {
     alert("Nu ai introdus salariul!");
     return;
-  }
-  if(!salariuNetCheck.checked || !salariuBrutCheck.checked) {
-    alert("Nu ai selectat tipul salariului pe care vrei sa il calculezi!");
-    
   }
 
   vechime.innerHTML = ``;
@@ -229,7 +216,6 @@ button.addEventListener("click", () => {
   let impozit = 0;
   let salariuBrut = 0;
   let salariuNet = 0;
-
 
   salariuIntrodus.innerHTML = salariu;
 
@@ -278,6 +264,9 @@ button.addEventListener("click", () => {
     sumaImpozit.innerHTML = Math.round(impozit);
     tipSalariuSelectat.innerHTML = "Brut";
     tipSalariuIntrodus.innerHTML = "Net";
+  } else {
+    alert("Nu ai selectat tipul salariului pe care vrei sa il calculezi!");
+    return;
   }
 
   inputSalariu.value = "";

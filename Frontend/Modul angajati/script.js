@@ -106,10 +106,10 @@ var columnDefs = [
 
 
   function createNewRowData() {
-    let valoareImpozit = 'NU';
+    let valoareImpozit = 'DA';
 
     if(impozit.checked) {
-        valoareImpozit = 'DA';
+        valoareImpozit = 'NU';
     } 
 
     var newData = {

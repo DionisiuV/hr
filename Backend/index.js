@@ -4,6 +4,8 @@ let bodyParser = require('body-parser');
 //import mongoose
 let mongoose = require('mongoose');
 let app = express();
+var cors = require('cors')
+app.use(cors())
 
 //Import routes
 let apiRoutes = require("./routes")

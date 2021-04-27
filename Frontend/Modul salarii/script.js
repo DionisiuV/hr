@@ -70,18 +70,22 @@ function start() {
 
     // console.log(test1);
 
-    vechime.innerHTML = `<strong>${dataArray[select.selectedIndex - 1].companyAge
-      } ani</strong>`;
-    pozitie.innerHTML = `${dataArray[select.selectedIndex - 1].position
-      }`;
-    echipa.innerHTML = `<strong>${dataArray[select.selectedIndex - 1].team
-      }</string>`;
-    email.innerHTML = `<strong>${dataArray[select.selectedIndex - 1].email
-      }</strong>`;
-    telefon.innerHTML = `<strong>0${dataArray[select.selectedIndex - 1].phone
-      }</strong>`;
-    numeAngajat.innerHTML = `${select.options[select.selectedIndex].textContent
-      }`;
+    vechime.innerHTML = `<strong>${
+      dataArray[select.selectedIndex - 1].companyAge
+    } ani</strong>`;
+    pozitie.innerHTML = `${dataArray[select.selectedIndex - 1].position}`;
+    echipa.innerHTML = `<strong>${
+      dataArray[select.selectedIndex - 1].team
+    }</string>`;
+    email.innerHTML = `<strong>${
+      dataArray[select.selectedIndex - 1].email
+    }</strong>`;
+    telefon.innerHTML = `<strong>0${
+      dataArray[select.selectedIndex - 1].phone
+    }</strong>`;
+    numeAngajat.innerHTML = `${
+      select.options[select.selectedIndex].textContent
+    }`;
   };
 }
 

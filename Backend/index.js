@@ -1,50 +1,54 @@
-let express = require('express')
+let express = require("express");
 //import body parser
-let bodyParser = require('body-parser');
+let bodyParser = require("body-parser");
 //import mongoose
-let mongoose = require('mongoose');
+let mongoose = require("mongoose");
 let app = express();
-var cors = require('cors')
-app.use(cors())
+var cors = require("cors");
+app.use(cors());
 
 //Import routes
-let apiRoutes = require("./routes")
+let apiRoutes = require("./routes");
 
 //configure bodyparser to hande the post requests
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
 
 app.use(bodyParser.json());
 
 //connect to mongoose
-const dbPath = 'mongodb+srv://admin:admin@cluster0.ux4ae.mongodb.net/employees?retryWrites=true&w=majority';
-const options = {useNewUrlParser: true, useUnifiedTopology: true}
+const dbPath =
+  "mongodb+srv://user:password@cluster0.ux4ae.mongodb.net/employees?retryWrites=true&w=majority";
+const options = { useNewUrlParser: true, useUnifiedTopology: true };
 const mongo = mongoose.connect(dbPath, options);
 
-mongo.then(() => {
-    console.log('connected');
-}, error => {
-    console.log(error, 'error');
-});
-var db=mongoose.connection;
+mongo.then(
+  () => {
+    console.log("connected");
+  },
+  (error) => {
+    console.log(error, "error");
+  }
+);
+var db = mongoose.connection;
 
 //Check DB Connection
-if (!db)
-    console.log("Error connecting db");
-else
-    console.log("DB Connected Successfully");
+if (!db) console.log("Error connecting db");
+else console.log("DB Connected Successfully");
 
 // Server Port
 var port = process.env.PORT || 8080;
 
 // Welcome message
-app.get('/', (req, res) => res.send('Welcome to Express'));
+app.get("/", (req, res) => res.send("Welcome to Express"));
 
 //Use API routes in the App
-app.use('/api', apiRoutes)
+app.use("/api", apiRoutes);
 
 // Launch app to the specified port
-app.listen(port, function() {
-    console.log("Running FirstRest on Port "+ port);
+app.listen(port, function () {
+  console.log("Running FirstRest on Port " + port);
 });
